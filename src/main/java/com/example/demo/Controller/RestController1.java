@@ -3,6 +3,7 @@ package com.example.demo.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,5 +34,10 @@ public class RestController1 {
 	 @PostMapping("/post")
 	    public String sayHello(@RequestBody User user){
 	        return "Hello "+user.getFirstName() +" "+ user.getLastName();
+	    }
+	 //Use PUT Request Method and pass first name as Path Variable and last name as Query Parameter
+	 @PutMapping("/put/{firstName}")
+	    public String sayHelloPut(@PathVariable String firstName, @RequestParam(value = "lastName") String lastName){
+	        return  "Hello "+firstName+ " " +lastName;
 	    }
 }
